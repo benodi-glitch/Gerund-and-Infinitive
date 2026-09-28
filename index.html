@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gerunds & Infinitives — Business Life Grammar Lab</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root{--navy:#1f2b55;--blue:#45659d;--coral:#e8734e;--ink:#202635;--muted:#667085;--paper:#fff;--bg:#f4f7fb;--line:#d9e1ef;--soft:#f1f5fb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+.wrap{max-width:920px;margin:0 auto;padding:28px 18px 60px}
+header{background:var(--navy);color:#fff;border-radius:14px;padding:28px 30px;margin-bottom:20px}
+h1{font-family:Georgia,serif;font-size:30px;line-height:1.15;margin:0 0 8px}
+header p{margin:0;color:#dbe5f9;font-size:15px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 20px}
+label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:5px}
+input,textarea,select{width:100%;font:inherit;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px;color:var(--ink)}
+textarea{min-height:72px;resize:vertical}
+section{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px 26px;margin-bottom:18px}
+h2{font-family:Georgia,serif;font-size:22px;color:var(--navy);margin:0 0 6px}
+.intro{color:var(--muted);font-size:14px;margin:0 0 16px}
+.rulebox{background:var(--soft);border-left:5px solid var(--blue);padding:15px 18px;border-radius:8px;margin:12px 0 20px}
+.rulebox strong{color:var(--navy)}
+.item{border-top:1px solid var(--line);padding:16px 0}
+.item:first-child{border-top:0;padding-top:2px}
+.q{font-size:15.5px;margin:0 0 9px;font-weight:600}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+.option{padding:9px 11px;border:1px solid #e4e9f2;border-radius:8px;background:#fbfcfe;font-size:14px}
+.answer-row{margin-top:10px;max-width:240px}
+.small{font-size:12px;color:var(--muted)}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:24px 0 0}
+button{border:0;border-radius:9px;padding:12px 20px;font-size:15px;font-weight:700;cursor:pointer}
+.primary{background:var(--coral);color:#fff}.secondary{background:var(--navy);color:#fff}
+.note{text-align:center;font-size:12px;color:var(--muted);margin-top:10px}
+@media (max-width:700px){.fields{grid-template-columns:1fr}.options{grid-template-columns:1fr}section{padding:20px}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Gerunds &amp; Infinitives — Business Life Grammar Lab</h1>
+  <p>Use the patterns, not just the formulas. Pay attention to the verb or preposition that comes before the action.</p>
+</header>
+<div class="fields">
+  <div><label for="name">Name</label><input id="name" placeholder="Enter your full name"></div>
+  <div><label for="group">Group</label><input id="group" placeholder="Group number"></div>
+</div>
+
+<section>
+<h2>Quick Reference</h2>
+<p class="intro">A gerund and an infinitive can both refer to actions, but English verbs conventionally select different patterns.</p>
+<div class="rulebox">
+<p><strong>Verb + gerund:</strong> enjoy working · avoid spending · suggest changing</p>
+<p><strong>Verb + infinitive:</strong> decide to leave · plan to expand · agree to cooperate</p>
+<p><strong>Preposition + gerund:</strong> interested in learning · responsible for managing · committed to improving</p>
+<p><strong>Watch the “to” trap:</strong> <em>decide to expand</em> ≠ <em>committed to expanding</em>. In the first, <em>to</em> introduces an infinitive; in the second, <em>to</em> is a preposition.</p>
+</div>
+</section>
+
+<section>
+<h2>A · Choose the Best Pattern</h2>
+<p class="intro">Select the option that fits standard English and the meaning of the sentence.</p>
+<div id="mcq"></div>
+</section>
+
+<section>
+<h2>B · Grammar Error Detective</h2>
+<p class="intro">Each sentence contains one gerund/infinitive pattern error. Rewrite the sentence correctly.</p>
+<div id="errors"></div>
+</section>
+
+<section>
+<h2>C · Pattern in Context</h2>
+<p class="intro">Answer briefly. Focus on <strong>why</strong> the pattern works, not only on the final answer.</p>
+<div id="concepts"></div>
+</section>
+
+<section>
+<h2>D · Short Application</h2>
+<p class="intro">Write three original business-life sentences. Use the required pattern accurately.</p>
+<div class="item">
+  <p class="q">1. Use <strong>enjoy + gerund</strong> in a sentence about work.</p>
+  <textarea id="d1" placeholder="Your sentence..."></textarea>
+</div>
+<div class="item">
+  <p class="q">2. Use <strong>decide + infinitive</strong> in a sentence about a business decision.</p>
+  <textarea id="d2" placeholder="Your sentence..."></textarea>
+</div>
+<div class="item">
+  <p class="q">3. Use <strong>responsible for + gerund</strong> in a sentence about a job responsibility.</p>
+  <textarea id="d3" placeholder="Your sentence..."></textarea>
+</div>
+</section>
+
+<div class="btnrow">
+  <button class="primary" onclick="downloadPDF()">Download as PDF</button>
+  <button class="secondary" onclick="window.print()">Print / Save to PDF</button>
+</div>
+<p class="note">Enter your name before downloading. The PDF uses generous margins and automatic text wrapping for readability.</p>
+</div>
+
+<script>
+const mcqs = [
+['1. The marketing team enjoys ______ with small businesses to test new ideas.','meeting','to meet','meet','met','A'],
+['2. After reviewing the budget, the directors decided ______ the expansion until next year.','delaying','to delay','delay','delayed','B'],
+['3. Our manager suggested ______ the proposal before sending it to the client.','to revise','revising','revise','revised','B'],
+['4. The company is interested in ______ its services to Southeast Asia.','expand','to expand','expanding','expanded','C'],
+['5. The finance department is responsible for ______ monthly expenditure reports.','prepare','to prepare','prepared','preparing','D'],
+['6. The company avoided ______ a large number of employees during the downturn.','to lay off','laying off','lay off','laid off','B'],
+['7. The new CEO hopes ______ the company’s reputation in international markets.','improving','improve','to improve','improved','C'],
+['8. Before ______ a final decision, the board examined the risks carefully.','making','to make','make','made','A'],
+['9. The team looks forward to ______ with the new international partner.','work','to work','working','worked','C'],
+['10. The manager refused ______ confidential information to the media.','releasing','release','to release','released','C'],
+['11. The company is committed to ______ its customer-service system.','improve','improving','to improve','improved','B'],
+['12. After several failed attempts, the startup managed ______ its first major investor.','to attract','attracting','attract','attracted','A']
+];
+
+const errors = [
+['1. The consultant recommended to reduce unnecessary travel expenses.','The consultant recommended reducing unnecessary travel expenses.'],
+['2. The company decided expanding into the Indonesian market.','The company decided to expand into the Indonesian market.'],
+['3. She is interested to learn more about international marketing.','She is interested in learning more about international marketing.'],
+['4. We look forward to meet your team next month.','We look forward to meeting your team next month.'],
+['5. The manager avoided to discuss the issue during the meeting.','The manager avoided discussing the issue during the meeting.'],
+['6. The directors agreed changing the deadline for the project.','The directors agreed to change the deadline for the project.']
+];
+
+const concepts = [
+['1. In “The company decided to expand,” what does the infinitive mainly express? Choose one: an activity enjoyed, a decision/intention, or a noun-like object of a preposition.','A decision or intention'],
+['2. In “The company is committed to expanding overseas,” why is “expanding” used after “to”? Identify the grammatical function of “to.”','“To” is a preposition, so it is followed by a gerund.'],
+['3. Why is “suggested changing” acceptable but “suggested to change” not standard in this pattern?','Suggest conventionally selects a gerund pattern in this use: suggest doing something.'],
+['4. What is the practical reason students should learn “verb + pattern” together instead of memorizing verbs alone?','Different verbs conventionally select different complementation patterns, so the pattern is part of how the verb is normally used.'],
+['5. Compare “She enjoys leading the team” and “She decided to lead the team.” What changes in focus?','The first presents leading as an activity she enjoys; the second presents leading as an intended/decided action.']
+];
+
+function addMCQ(){
+ const el=document.getElementById('mcq');
+ mcqs.forEach((q,i)=>{
+  const d=document.createElement('div');d.className='item';
+  d.innerHTML=`<p class="q">${q[0]}</p><div class="options"><div class="option"><strong>A.</strong> ${q[1]}</div><div class="option"><strong>B.</strong> ${q[2]}</div><div class="option"><strong>C.</strong> ${q[3]}</div><div class="option"><strong>D.</strong> ${q[4]}</div></div><div class="answer-row"><label>Your answer</label><select id="mc${i}"><option value="">Choose A–D</option><option>A</option><option>B</option><option>C</option><option>D</option></select></div>`;
+  el.appendChild(d);
+ });
+}
+function addErrors(){
+ const el=document.getElementById('errors');
+ errors.forEach((q,i)=>{const d=document.createElement('div');d.className='item';d.innerHTML=`<p class="q">${q[0]}</p><textarea id="err${i}" placeholder="Rewrite the sentence correctly..."></textarea>`;el.appendChild(d);});
+}
+function addConcepts(){
+ const el=document.getElementById('concepts');
+ concepts.forEach((q,i)=>{const d=document.createElement('div');d.className='item';d.innerHTML=`<p class="q">${q[0]}</p><textarea id="con${i}" placeholder="Explain briefly..."></textarea>`;el.appendChild(d);});
+}
+addMCQ();addErrors();addConcepts();
+
+function wrap(doc,text,x,y,maxWidth,size=10.5,lineH=14){
+ doc.setFont('helvetica','normal');doc.setFontSize(size);doc.setTextColor(32,38,53);
+ const lines=doc.splitTextToSize(text||'(not answered)',maxWidth);
+ doc.text(lines,x,y);return y+lines.length*lineH;
+}
+function heading(doc,text,x,y){
+ doc.setFont('helvetica','bold');doc.setFontSize(14);doc.setTextColor(31,43,85);doc.text(text,x,y);return y+20;
+}
+function ensure(doc,y){if(y>745){doc.addPage();return 55}return y}
+function downloadPDF(){
+ const name=(document.getElementById('name').value||'Student').trim();
+ const group=(document.getElementById('group').value||'').trim();
+ const {jsPDF}=window.jspdf;
+ const doc=new jsPDF({unit:'pt',format:'a4',compress:false});
+ const left=56,right=56,top=52,maxW=595-left-right;
+ let y=top;
+ doc.setFont('helvetica','bold');doc.setFontSize(17);doc.setTextColor(31,43,85);doc.text('Gerunds & Infinitives — Business Life Grammar Lab',left,y);y+=22;
+ doc.setFont('helvetica','normal');doc.setFontSize(10.5);doc.setTextColor(102,112,133);doc.text(`${name}${group?' · Group '+group:''}`,left,y);y+=25;
+ y=heading(doc,'A — Choose the Best Pattern',left,y);
+ mcqs.forEach((q,i)=>{
+  y=ensure(doc,y);y=wrap(doc,q[0],left,y,maxW,10.2,13)+3;
+  const ans=document.getElementById('mc'+i).value||'(not answered)';
+  y=wrap(doc,'Answer: '+ans,left+12,y,maxW-12,10.2,13)+10;
+ });
+ y=ensure(doc,y);y=heading(doc,'B — Grammar Error Detective',left,y);
+ errors.forEach((q,i)=>{y=ensure(doc,y);y=wrap(doc,q[0],left,y,maxW,10.2,13)+2;y=wrap(doc,'Correction: '+(document.getElementById('err'+i).value||'(not answered)'),left+12,y,maxW-12,10.2,13)+10});
+ y=ensure(doc,y);y=heading(doc,'C — Pattern in Context',left,y);
+ concepts.forEach((q,i)=>{y=ensure(doc,y);y=wrap(doc,q[0],left,y,maxW,10.2,13)+2;y=wrap(doc,'Response: '+(document.getElementById('con'+i).value||'(not answered)'),left+12,y,maxW-12,10.2,13)+10});
+ y=ensure(doc,y);y=heading(doc,'D — Short Application',left,y);
+ [['1',document.getElementById('d1').value],['2',document.getElementById('d2').value],['3',document.getElementById('d3').value]].forEach(([n,val])=>{y=ensure(doc,y);y=wrap(doc,`Response ${n}: ${val||'(not answered)'}`,left,y,maxW,10.2,13)+12});
+ const pages=doc.getNumberOfPages();
+ for(let p=1;p<=pages;p++){doc.setPage(p);doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(120,128,145);doc.text(`Business Life · Gerunds & Infinitives · ${name}`,left,806);doc.text(`${p}/${pages}`,560,806);}
+ const safe=name.replace(/[^a-z0-9]+/gi,'_');doc.save(`${safe}_Gerunds_Infinitives_GrammarLab.pdf`);
+}
+</script>
+</body>
+</html>
